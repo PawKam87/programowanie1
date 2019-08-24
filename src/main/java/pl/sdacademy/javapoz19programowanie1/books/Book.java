@@ -30,6 +30,7 @@ public class Book {
                 "title='" + title + '\'' +
                 ", releaseYear=" + releaseYear +
                 ", pages=" + pages +
+                ", authors=" + author.getFirstName() + "" + author.getLastName()+
                 '}';
     }
 
