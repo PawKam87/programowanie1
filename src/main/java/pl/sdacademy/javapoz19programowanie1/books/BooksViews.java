@@ -23,7 +23,18 @@ public class BooksViews {
         System.out.println();
         System.out.println("1. Find by nation (PL, ENG, USA)"); //TODO zrobic to dynamiczne
         System.out.println("2. Find by after birthYear");
-        System.out.println("0. Wroc");
+        System.out.println("0. Back");
+        return getDecision();
+    }
+
+    public int booksMenu(List<Book> books) {
+        books.stream().forEach(book -> System.out.println(book));
+        System.out.println();
+        System.out.println("1. Find by after releaseYear");
+        System.out.println("2. Search by title");
+        System.out.println("3. Search by author");
+        System.out.println("0. Back");
+        System.out.println();
         return getDecision();
     }
 
@@ -37,17 +48,24 @@ public class BooksViews {
     }
 
     private int getDecisionAfterEnter() {
-        int menu = scanner.nextInt();
+        return readInitAndClearLine();
+    }
+
+    public int getBirthYear() {
+        return readInitAndClearLine();
+    }
+
+    public int getReleaseYear() {
+        return readInitAndClearLine();
+    }
+
+    private int readInitAndClearLine() {
+        int value = scanner.nextInt();
         scanner.nextLine();
-        return menu;
+        return value;
+    }
+
+    public String getPhrase() {
+        return null;
     }
 }
-
-
-
-
-
-
-
-
-
