@@ -31,6 +31,45 @@ public class MyArrayList {
         data[size++] = value;
     }
 
+    public void add_replacing(int index, Integer value) {
+        if (index > size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+
+        doubleSpaceIfNeeded();
+//        for (int i = size - 1; i >= index; i--) {
+//            data[i + 1] = data[i];
+//        }
+        for (int i = size; i > index; i--) {
+            data[i] = data[i - 1];
+        }
+
+        data[index] = value;
+        size++;
+    }
+
+    public void add_cloneArray(int index, Integer value) {
+        if (index > size) {
+            throw new ArrayIndexOutOfBoundsException(index);
+        }
+
+        Integer[] newArray = new Integer[data.length + 1];
+        // 1. przepisujemy lewa czesc
+        for (int i = 0; i < index; i++) {
+            newArray[i] = data[i];
+        }
+        // 2. wstawiamy wartosc
+        newArray[index] = value;
+
+        // 3. przepisujemy prawa czesc
+        for (int i = index + 1; i < size + 1; i++) {
+            newArray[i] = data[i - 1];
+        }
+
+        this.data = newArray;
+        size++;
+    }
+
     public void remove(int index) {
         if (index >= size) {
             throw new ArrayIndexOutOfBoundsException(index);
